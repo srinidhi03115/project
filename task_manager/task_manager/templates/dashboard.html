@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #eef2f7, #fdf6f0);
+    }
+
+    .dashboard-container {
+        max-width: 1050px;
+        margin: 50px auto;
+        padding: 40px;
+        border-radius: 25px;
+        background: #ffffff;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.06);
+    }
+
+    h3 {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 35px;
+        color: #3d5a80; /* dusty blue */
+        letter-spacing: 1px;
+    }
+
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        padding: 10px 22px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        transition: 0.3s ease;
+        color: #2f3e46;
+    }
+
+    .add-btn {
+        background: #98c1d9; /* soft blue */
+    }
+
+    .logout-btn {
+        background: #ee6c4d; /* muted coral */
+        color: white;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 14px;
+    }
+
+    th {
+        text-align: center;
+        padding: 14px;
+        font-size: 14px;
+        color: #6c757d;
+        letter-spacing: 1px;
+    }
+
+    td {
+        background: #f8f9fa;
+        padding: 18px;
+        text-align: center;
+        border-radius: 18px;
+        transition: 0.3s ease;
+        color: #495057;
+    }
+
+    tr:hover td {
+        background: #edf2f4;
+        transform: translateY(-2px);
+    }
+
+    .status {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .completed {
+        background: #84a59d;  /* sage green */
+        color: white;
+    }
+
+    .pending {
+        background: #f6bd60;  /* soft amber */
+        color: #5f370e;
+    }
+
+    .actions a {
+        text-decoration: none;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 12px;
+        margin: 3px;
+        transition: 0.3s ease;
+        color: white;
+        display: inline-block;
+    }
+
+    .complete {
+        background: #3d5a80; /* deep dusty blue */
+    }
+
+    .edit {
+        background: #98c1d9; /* soft blue */
+        color: #2f3e46;
+    }
+
+    .delete {
+        background: #e56b6f; /* soft red */
+    }
+
+    .actions a:hover {
+        opacity: 0.85;
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+        .top-bar {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        td, th {
+            font-size: 12px;
+            padding: 10px;
+        }
+    }
+</style>
+
+<div class="dashboard-container">
+
+    <h3>Task Dashboard</h3>
+
+    <div class="top-bar">
+        <a href="/add_task" class="btn add-btn">+ Add Task</a>
+        <a href="/logout" class="btn logout-btn">Logout</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.title }}</td>
+            <td>
+                {% if task.status == "Completed" %}
+                    <span class="status completed">Completed</span>
+                {% else %}
+                    <span class="status pending">Pending</span>
+                {% endif %}
+            </td>
+            <td class="actions">
+                <a href="/complete/{{ task.id }}" class="complete">Complete</a>
+                <a href="/edit/{{ task.id }}" class="edit">Edit</a>
+                <a href="/delete/{{ task.id }}" class="delete">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}

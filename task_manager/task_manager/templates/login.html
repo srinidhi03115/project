@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    body {
+        min-height: 100vh;
+        background:
+            linear-gradient(rgba(255, 248, 240, 0.8), rgba(255, 248, 240, 0.8)),
+            url("https://images.unsplash.com/photo-1506744038136-46273834b3fb");
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .login-card {
+        max-width: 420px;
+        margin: 60px auto;
+        padding: 35px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        color: #333;
+        animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .login-card h3 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 24px;
+        font-weight: 600;
+        color: #5d4037;
+    }
+
+    .login-card label {
+        font-weight: 500;
+        font-size: 14px;
+        color: #6d4c41;
+    }
+
+    .login-card input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 8px;
+        margin-bottom: 18px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        outline: none;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    .login-card input:focus {
+        border-color: #bcaaa4;
+        box-shadow: 0 0 6px rgba(188, 170, 164, 0.4);
+    }
+
+    .login-card button {
+        width: 100%;
+        padding: 12px;
+        border-radius: 25px;
+        border: none;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        background: linear-gradient(to right, #a1887f, #8d6e63);
+        color: white;
+        transition: 0.3s ease;
+    }
+
+    .login-card button:hover {
+        transform: scale(1.04);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .login-card a {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        color: #6d4c41;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .login-card a:hover {
+        text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-15px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div class="login-card">
+    <h3>Login</h3>
+
+    <form method="POST">
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <a href="/register">Create an Account</a>
+</div>
+
+{% endblock %}

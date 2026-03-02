@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    body {
+        min-height: 100vh;
+
+        /* Soft dark aesthetic background */
+        background:
+            linear-gradient(rgba(40, 44, 52, 0.75), rgba(40, 44, 52, 0.75)),
+            url("https://images.unsplash.com/photo-1492724441997-5dc865305da7");
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .register-card {
+        max-width: 420px;
+        margin: 70px auto;
+        padding: 40px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        color: #333;
+    }
+
+    .register-card h3 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 24px;
+        font-weight: 600;
+        color: #222;
+    }
+
+    .register-card label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #444;
+    }
+
+    .register-card input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 6px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        outline: none;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    .register-card input:focus {
+        border-color: #5c6bc0;
+        box-shadow: 0 0 0 3px rgba(92, 107, 192, 0.15);
+    }
+
+    .register-card button {
+        width: 100%;
+        padding: 12px;
+        border-radius: 25px;
+        border: none;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        background: linear-gradient(to right, #5c6bc0, #3949ab);
+        color: white;
+        transition: 0.3s ease;
+    }
+
+    .register-card button:hover {
+        transform: scale(1.03);
+    }
+
+    .register-card a {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #3949ab;
+        text-decoration: none;
+    }
+
+    .register-card a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="register-card">
+    <h3>Create Account</h3>
+
+    <form method="POST">
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <a href="/login">Already have an account? Login</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80") no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+    }
+
+    .edit-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
+    }
+
+    .edit-card {
+        width: 100%;
+        max-width: 420px;
+        padding: 35px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        backdrop-filter: blur(4px);
+    }
+
+    .edit-card h3 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 22px;
+        font-weight: 600;
+        color: #1e3d59;
+    }
+
+    .edit-card label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 6px;
+        color: #444;
+    }
+
+    .edit-card input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        font-size: 14px;
+        outline: none;
+        transition: 0.2s;
+    }
+
+    .edit-card input:focus {
+        border-color: #5dade2;
+        box-shadow: 0 0 6px rgba(93, 173, 226, 0.4);
+    }
+
+    .edit-card button {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        background-color: #5dade2;
+        color: white;
+        transition: 0.2s;
+    }
+
+    .edit-card button:hover {
+        background-color: #3498db;
+    }
+</style>
+
+<div class="edit-wrapper">
+    <div class="edit-card">
+        <h3>Edit Task</h3>
+
+        <form method="POST">
+            <label for="title">Task Title</label>
+            <input type="text" id="title" name="title" value="{{ task.title }}" required>
+
+            <button type="submit">Update Task</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
